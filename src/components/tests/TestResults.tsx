@@ -3,6 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Trophy, Award, BookOpen, Download } from "lucide-react";
 import { Link } from "react-router-dom";
+import { generateTestResultPDF } from "@/utils/pdfGenerator";
+import { toast } from "sonner";
+import { Question } from "./QuestionCard";
 
 interface TestResultsProps {
   score: number;
@@ -10,6 +13,8 @@ interface TestResultsProps {
   correctAnswers: number;
   timeSpent: string;
   onRetake: () => void;
+  questions?: Question[];
+  userAnswers?: {[key: number]: number};
 }
 
 const TestResults = ({
@@ -18,6 +23,8 @@ const TestResults = ({
   correctAnswers,
   timeSpent,
   onRetake,
+  questions = [],
+  userAnswers = {},
 }: TestResultsProps) => {
   const percentage = Math.round((correctAnswers / totalQuestions) * 100);
   
@@ -47,6 +54,28 @@ const TestResults = ({
   };
   
   const badges = getBadges();
+
+  const handleDownloadPDF = () => {
+    try {
+      if (questions.length === 0) {
+        toast.error("No question data available for PDF generation");
+        return;
+      }
+      
+      const summary = {
+        score: percentage,
+        totalQuestions,
+        correctAnswers,
+        timeSpent
+      };
+      
+      generateTestResultPDF(questions, userAnswers, summary);
+      toast.success("PDF successfully generated and downloaded");
+    } catch (error) {
+      console.error("PDF generation error:", error);
+      toast.error("Failed to generate PDF. Please try again.");
+    }
+  };
   
   return (
     <Card className="glass-card w-full max-w-3xl mx-auto animate-scale-in">
@@ -132,6 +161,7 @@ const TestResults = ({
         </Button>
         <Button 
           variant="outline" 
+          onClick={handleDownloadPDF}
           className="w-full sm:w-auto flex items-center gap-2"
         >
           <Download size={16} />

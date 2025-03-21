@@ -1,6 +1,6 @@
 
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { 
   Card,
   CardContent,
@@ -19,18 +19,35 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Check if we have a redirect URL in the state (from protected routes)
+  const from = location.state?.from || '/dashboard';
+
+  useEffect(() => {
+    // Check if already logged in when component mounts
+    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+    if (isAuthenticated) {
+      navigate('/dashboard');
+    }
+  }, [navigate]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate authentication
+    // Simulate authentication with a delay
     setTimeout(() => {
       // For demo purposes, we'll accept any input
       localStorage.setItem('isAuthenticated', 'true');
       localStorage.setItem('user', JSON.stringify({ email }));
+      
+      // Show success toast
       toast.success('Successfully logged in!');
-      navigate('/dashboard');
+      
+      // Navigate to the original destination or dashboard
+      navigate(from);
+      
       setIsLoading(false);
     }, 1500);
   };
