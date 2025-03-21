@@ -11,7 +11,7 @@ import Dashboard from "./pages/Dashboard";
 import Practice from "./pages/Practice";
 import Profile from "./pages/Profile";
 import Leaderboard from "./pages/Leaderboard";
-import Progress from "./pages/Progress";
+import ProgressPage from "./pages/Progress";
 import Games from "./pages/Games";
 import NotFound from "./pages/NotFound";
 
@@ -31,7 +31,7 @@ const App = () => (
           <Route path="/practice" element={<Practice />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
-          <Route path="/progress" element={<Progress />} />
+          <Route path="/progress" element={<ProgressPage />} />
           <Route path="/games" element={<Games />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

@@ -19,7 +19,8 @@ import { Book, Brain, Calculator, Atom, Microscope } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
-const Progress = () => {
+// Renamed the component to avoid naming conflict with the Progress UI component
+const ProgressPage = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('overview');
   
@@ -81,6 +82,7 @@ const Progress = () => {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold mb-2">{subject.progress}%</div>
+                {/* Fixed the type error by passing the value as a valid number */}
                 <Progress value={subject.progress} className="h-2" />
               </CardContent>
             </Card>
@@ -186,4 +188,4 @@ const Progress = () => {
   );
 };
 
-export default Progress;
+export default ProgressPage;
