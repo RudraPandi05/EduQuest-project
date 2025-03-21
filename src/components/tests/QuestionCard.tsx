@@ -4,7 +4,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { Check, X, CornerDownRight, AlertCircle } from "lucide-react";
+import { Check, X, CornerDownRight, AlertCircle, Video } from "lucide-react";
 
 export interface Question {
   id: number;
@@ -12,6 +12,7 @@ export interface Question {
   options: string[];
   correctOption: number;
   explanation?: string;
+  videoUrl?: string;
 }
 
 interface QuestionCardProps {
@@ -32,6 +33,7 @@ const QuestionCard = ({
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
   
   const handleOptionSelect = (value: string) => {
     if (!isAnswered) {
@@ -51,10 +53,40 @@ const QuestionCard = ({
     setSelectedOption(null);
     setIsAnswered(false);
     setShowExplanation(false);
+    setShowVideo(false);
     onNext();
   };
   
   const isCorrect = selectedOption === question.correctOption;
+  
+  // Sample video URLs for demonstration
+  const getVideoUrl = () => {
+    // In a real app, these would come from the database or API
+    const videoUrls = {
+      'physics': 'https://www.youtube.com/embed/A0V_Z1ePog0',
+      'chemistry': 'https://www.youtube.com/embed/tJBHMNRGkzw',
+      'math': 'https://www.youtube.com/embed/0uQNGJqb7fE',
+      'biology': 'https://www.youtube.com/embed/VzKMf9qtcV0'
+    };
+    
+    // Return a video based on question content or use a default
+    if (question.videoUrl) {
+      return question.videoUrl;
+    }
+    
+    if (question.question.toLowerCase().includes('physics')) {
+      return videoUrls.physics;
+    } else if (question.question.toLowerCase().includes('chem')) {
+      return videoUrls.chemistry;
+    } else if (question.question.toLowerCase().includes('math')) {
+      return videoUrls.math;
+    } else if (question.question.toLowerCase().includes('bio')) {
+      return videoUrls.biology;
+    }
+    
+    // Default video
+    return videoUrls.physics;
+  };
   
   return (
     <Card className="glass-card w-full max-w-3xl mx-auto animate-scale-in">
@@ -106,23 +138,48 @@ const QuestionCard = ({
           ))}
         </RadioGroup>
         
-        {isAnswered && question.explanation && (
-          <div className="mt-6">
+        {isAnswered && (
+          <div className="mt-6 space-y-4">
+            {question.explanation && (
+              <Button 
+                variant="outline" 
+                onClick={() => setShowExplanation(!showExplanation)}
+                className="flex items-center gap-2 text-muted-foreground mr-2"
+              >
+                {showExplanation ? "Hide Explanation" : "Show Explanation"}
+                <AlertCircle size={16} />
+              </Button>
+            )}
+            
             <Button 
               variant="outline" 
-              onClick={() => setShowExplanation(!showExplanation)}
+              onClick={() => setShowVideo(!showVideo)}
               className="flex items-center gap-2 text-muted-foreground"
             >
-              {showExplanation ? "Hide Explanation" : "Show Explanation"}
-              <AlertCircle size={16} />
+              {showVideo ? "Hide Video" : "Watch Video Explanation"}
+              <Video size={16} />
             </Button>
             
-            {showExplanation && (
-              <div className="mt-3 p-4 bg-muted/30 rounded-lg animate-fade-in">
+            {showExplanation && question.explanation && (
+              <div className="p-4 bg-muted/30 rounded-lg animate-fade-in">
                 <div className="flex items-start gap-2">
                   <CornerDownRight size={16} className="text-muted-foreground mt-1" />
                   <p className="text-muted-foreground">{question.explanation}</p>
                 </div>
+              </div>
+            )}
+            
+            {showVideo && (
+              <div className="mt-4 rounded-lg overflow-hidden animate-fade-in">
+                <iframe
+                  width="100%"
+                  height="315"
+                  src={getVideoUrl()}
+                  title="Video explanation"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
             )}
           </div>
