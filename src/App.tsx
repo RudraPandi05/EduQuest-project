@@ -14,6 +14,7 @@ import Profile from "./pages/Profile";
 import Leaderboard from "./pages/Leaderboard";
 import ProgressPage from "./pages/Progress";
 import Games from "./pages/Games";
+import FullLengthTest from "./pages/FullLengthTest";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/register" element={<Register />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/practice" element={<Practice />} />
+            <Route path="/full-length-test" element={<FullLengthTest />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/progress" element={<ProgressPage />} />

@@ -9,7 +9,8 @@ import {
   LogIn,
   BookOpen,
   Trophy,
-  BarChart
+  BarChart,
+  Gamepad2
 } from 'lucide-react';
 
 const Navbar = () => {
@@ -54,6 +55,12 @@ const Navbar = () => {
             <div className="flex items-center space-x-6">
               <Link to="/practice" className="story-link text-foreground hover:text-primary transition-colors flex items-center gap-2">
                 <BookOpen size={18} /> Practice
+              </Link>
+              <Link to="/full-length-test" className="story-link text-foreground hover:text-primary transition-colors flex items-center gap-2">
+                <BookOpen size={18} /> Full Length Test
+              </Link>
+              <Link to="/games" className="story-link text-foreground hover:text-primary transition-colors flex items-center gap-2">
+                <Gamepad2 size={18} /> Games
               </Link>
               <Link to="/leaderboard" className="story-link text-foreground hover:text-primary transition-colors flex items-center gap-2">
                 <Trophy size={18} /> Leaderboard
@@ -103,6 +110,12 @@ const Navbar = () => {
           <div className="container mx-auto px-4 py-4 space-y-4">
             <Link to="/practice" className="block py-2 text-foreground hover:text-primary transition-colors flex items-center gap-2">
               <BookOpen size={18} /> Practice
+            </Link>
+            <Link to="/full-length-test" className="block py-2 text-foreground hover:text-primary transition-colors flex items-center gap-2">
+              <BookOpen size={18} /> Full Length Test
+            </Link>
+            <Link to="/games" className="block py-2 text-foreground hover:text-primary transition-colors flex items-center gap-2">
+              <Gamepad2 size={18} /> Games
             </Link>
             <Link to="/leaderboard" className="block py-2 text-foreground hover:text-primary transition-colors flex items-center gap-2">
               <Trophy size={18} /> Leaderboard
