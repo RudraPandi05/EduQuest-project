@@ -1,69 +1,87 @@
-# Welcome to your Lovable project
+# EduQuest - Interactive Learning & Gamification Platform
 
-## Project info
+## Overview
+EduQuest is a modern, web-based platform designed to help students prepare for JEE and aptitude tests through an engaging, gamified learning experience. The platform offers interactive quizzes, badges, ranks, detailed explanations, video resources, and educational games to make learning fun and effective.
 
-**URL**: https://lovable.dev/projects/7aaa3f4b-c197-4a2d-b6b7-62ecb6ea7475
+## Features
+### 🎨 Modern UI & User Experience
+- Intuitive, visually appealing design with a clean layout
+- Gamification elements such as badges, ranks, and leaderboards
+- Mobile-friendly, responsive web application
 
-## How can I edit this code?
+### 🔐 User Authentication & Profile System
+- Secure sign-up and login functionality
+- User profiles with progress tracking
+- Social sharing of achievements and badges
 
-There are several ways of editing your application.
+### 📝 Comprehensive Testing System
+- **Practice Test:** Minimum 30 questions per session
+- **Full-Length Test:** Minimum 90 questions
+- Multiple question formats: MCQs, numerical input, logical reasoning
+- Instant feedback on answers
+- AI-powered adaptive difficulty
 
-**Use Lovable**
+### 📚 Detailed Explanations & Video Resources
+- Incorrect answers trigger concept explanations after the test
+- Embedded video tutorials related to the topic of the question
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7aaa3f4b-c197-4a2d-b6b7-62ecb6ea7475) and start prompting.
+### 🎮 Gamified Learning Experience
+- Badges & achievements for milestones (e.g., “Math Master” for scoring 90%)
+- Streak rewards and daily challenges to boost consistency
+- Leaderboards for competitive learning
 
-Changes made via Lovable will be committed automatically to this repo.
+### 🧩 Educational Games for Learning
+- Interactive Periodic Table game for chemistry
+- Math-based puzzles and logical reasoning challenges
+- Programming-based problem-solving games
 
-**Use your preferred IDE**
+### 📊 Performance Tracking & PDF Reports
+- Detailed performance breakdown after each test
+- Strength and weakness analysis
+- Option to export progress reports as PDFs
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 🌍 Offline Capabilities & Accessibility
+- Ability to download quizzes as PDFs for offline practice
+- Saved progress tracking for users in low-connectivity areas
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Installation
+To run the project locally, follow these steps:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone https://github.com/your-username/EduQuest.git
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate into the project directory
+cd EduQuest
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install  # or yarn install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+# Start the development server
+npm start  # or yarn start
 ```
 
-**Edit a file directly in GitHub**
+## Tech Stack
+- **Frontend:** React.js, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** Firebase/Auth0
+- **AI/ML:** TensorFlow.js (for adaptive difficulty)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Contributing
+Contributions are welcome! If you want to contribute:
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature-name`)
+3. Commit your changes (`git commit -m 'Add feature'`)
+4. Push to the branch (`git push origin feature-name`)
+5. Open a Pull Request
 
-**Use GitHub Codespaces**
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Contact
+For any queries or contributions, reach out via:
+- Email: your-email@example.com
+- GitHub Issues
 
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/7aaa3f4b-c197-4a2d-b6b7-62ecb6ea7475) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+Happy Learning! 🚀
